@@ -563,31 +563,6 @@ public class allowance extends javax.swing.JFrame {
         }
           display_table();
     }//GEN-LAST:event_btn_saveActionPerformed
-
-    /*
-    private double total_overtime() throws  SQLException{
-
-    //try{
-         String sql = "select overtime from allowance where id= ? ";
-         
-            pst = myConn.prepareStatement(sql);
-            pst.setString(1,txt_total_overtime.getText());
-            rs=pst.executeQuery();
-            
-             String ov=rs.getString("overtime");
-             double ovtotal = Double.parseDouble(ov);
-           //txt_total_overtime.setText(ov);
-           return  ovtotal;
-            
-    //}
-    //catch(Exception e){
-    
-    
-    //}
-
-
-}*/
-    
     
     private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
         int salary = Integer.parseInt(txt_salary.getText());

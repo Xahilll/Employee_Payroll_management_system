@@ -58,7 +58,6 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btn_add = new javax.swing.JButton();
-        txt_dob = new org.netbeans.modules.form.InvalidComponent();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -88,16 +87,12 @@ public class AddEmployee extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
         lbl_emp = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        txt_dob = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         txt_id.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        txt_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idActionPerformed(evt);
-            }
-        });
 
         txt_firstname.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txt_firstname.addActionListener(new java.awt.event.ActionListener() {
@@ -350,11 +345,11 @@ public class AddEmployee extends javax.swing.JFrame {
                                         .addComponent(txt_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_surname, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_address2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_address1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel14))))
                     .addGroup(layout.createSequentialGroup()
@@ -390,9 +385,10 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(r_male)
                             .addComponent(r_female))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,13 +475,13 @@ public class AddEmployee extends javax.swing.JFrame {
             
             
            
-            String sql="insert into staff_information (first_name,surname,Dob,Email,Contact_no,address1,address2,house_no,post_code,department,designation,hired_date,salary,job_title,status,Gender,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql="insert into staff_information (first_name,surname,Dob,Email,Contact_no,address1,address2,house_no,post_code,department,designation,hired_date,salary,job_title,status,Gender,image,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
            
             
            // pst.executeUpdate(sql);
             pst = myConn.prepareStatement(sql);
             
-           // pst.setString(1,txt_id.getText());
+            pst.setString(18,txt_id.getText());
             pst.setString(1,txt_firstname.getText());
             pst.setString(2, txt_surname.getText());
             pst.setString(3,((JTextField)txt_dob.getDateEditor().getUiComponent()).getText());
@@ -799,7 +795,7 @@ public class AddEmployee extends javax.swing.JFrame {
            
            
            // String dateValue = String.valueOf(txt_dob.getDate());
-           // java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+           //java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
             
          
            
@@ -940,7 +936,7 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField txt_contact;
     private javax.swing.JTextField txt_department1;
     private javax.swing.JTextField txt_designation;
-    private org.netbeans.modules.form.InvalidComponent txt_dob;
+    private com.toedter.calendar.JDateChooser txt_dob;
     private javax.swing.JTextField txt_firstname;
     private javax.swing.JTextField txt_hired;
     private javax.swing.JTextField txt_house;
